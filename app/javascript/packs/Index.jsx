@@ -5,10 +5,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-
+import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Main from '../components/Main'
+import Form from '../components/Form'
 const Hello = props => (
   <div>Hello {props.name}!</div>
 )
+const Feedback = (props) => (
+  <div>HWYYY {props.name}!</div>
+)
+
 
 Hello.defaultProps = {
   name: 'David'
@@ -17,10 +24,18 @@ Hello.defaultProps = {
 Hello.propTypes = {
   name: PropTypes.string
 }
-
+const App = (props) => {
+  return (<BrowserRouter>
+    <Switch>
+      <Route exact path="/feedback/new" component={Form} />
+      <Route exact path="/" component={Main} />
+      <Redirect to="/" />
+    </Switch>
+  </BrowserRouter>)
+}
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Hello name="React" />,
+    <App/>,
     document.body.appendChild(document.createElement('div')),
   )
 })
