@@ -33,9 +33,22 @@ You'll have to make a three steps satisfaction form with [Ruby on Rails](https:/
 
 9. Fill the below install section of this README with what I'll have to do to run your app locally.
 
-## Install
+## Install  
 
-You tell me.
+1. clone the project  
+    `git clone https://github.com/SalahEddineBC/fullstack-test.git`  
+2. install the required dependencies:  
+   `bundle install`  
+   `yarn install`  
+
+3. create the database  
+   `rails db:create`
+
+4. setup the database  
+   `rails db:migrate`
+5. Start the server  
+   `rails s`
+6. Navigate to <http://localhost:3000> for the main page
 
 ## Additional notes
 
