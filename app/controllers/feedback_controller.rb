@@ -1,5 +1,4 @@
 class FeedbackController < ApplicationController
-  skip_before_action :verify_authenticity_token, raise: false
   def index
     per_page = params[:n]
     page = params[:p]

@@ -8,18 +8,23 @@ export default (props) => {
     const [step, setStep] = useState(0);
     const [data, setData] = useState({});
     const submitForm = (formData) => {
+        const token = document.querySelector('meta[name="csrf-token"]').content;
+        console.log(token);
         return fetch(`/feedback`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                "X-CSRF-Token": token,
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({
                 feedback: formData
             })
-        }).then(function(response) {
+        }).then(function (response) {
             if (response.status >= 400 && response.status < 600) {
-              throw new Error("Bad response from server");
+                throw new Error("Bad response from server");
             }
             return response.json();
-          })
+        })
     }
     if (step == 0) {
         return <StepOne nextStep={(values) => {
@@ -32,7 +37,7 @@ export default (props) => {
             nextStep={(values) => {
                 submitForm({ ...data, ...values }).then(e => {
                     setStep(2)
-                }).catch(e =>setStep(3))
+                }).catch(e => setStep(3))
             }}
         />
     }
