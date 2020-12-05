@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 20201205163726) do
 
   create_table "infos", force: :cascade do |t|
-    t.string "email", null: false
+    t.string "uid", null: false
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.datetime "created_at", null: false
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 20201205163726) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.string "message_text"
-    t.integer "info_id"
+    t.string "message_text", null: false
+    t.integer "info_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
